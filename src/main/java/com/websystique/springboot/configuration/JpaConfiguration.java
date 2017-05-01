@@ -60,9 +60,9 @@ public class JpaConfiguration {
 			HikariDataSource dataSource = (HikariDataSource) DataSourceBuilder
 					.create(dataSourceProperties.getClassLoader())
 					.driverClassName("com.mysql.jdbc.Driver")
-					.url("jdbc:mysql://localhost:3306/dummy")
-					.username("root")
-					.password("root")
+					.url("jdbc:mysql://40.71.253.62:3306/dummy")
+					.username("user")
+					.password("password")
 					.type(HikariDataSource.class)
 					.build();
 			dataSource.setMaximumPoolSize(maxPoolSize);
@@ -98,11 +98,11 @@ public class JpaConfiguration {
 		Properties properties = new Properties();
 
 		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		properties.put("hibernate.hbm2ddl.auto", "update");
+		properties.put("hibernate.hbm2ddl.auto", "create-drop");
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
-		if(StringUtils.isNotEmpty(environment.getRequiredProperty("datasource.sampleapp.defaultSchema"))){
-			properties.put("hibernate.default_schema", environment.getRequiredProperty("datasource.sampleapp.defaultSchema"));
+		if(StringUtils.isNotEmpty("dummy")){
+			properties.put("hibernate.default_schema", "dummy");
 		}
 		return properties;
 	}
