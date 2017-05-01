@@ -4,34 +4,18 @@ server:
   contextPath: /SpringBootCRUDApp
 ---
 spring:
-  profiles: local, default
+  profiles: prod
 datasource:
   sampleapp:
-    url: jdbc:h2:~/test1
-    username: SA
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/dummy
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
     defaultSchema:
-    maxPoolSize: 10
+    maxPoolSize: 20
     hibernate:
-      hbm2ddl.method: create-drop
+      hbm2ddl.method: update
       show_sql: true
       format_sql: true
-      dialect: org.hibernate.dialect.H2Dialect
-#---
-#spring:
-#  profiles: prod
-#datasource:
-#  sampleapp:
-#    url: jdbc:mysql://localhost:3306/websystique
-#    username: myuser
-#    password: mypassword
-#    driverClassName: com.mysql.jdbc.Driver
-#    defaultSchema:
-#    maxPoolSize: 20
-#    hibernate:
-#      hbm2ddl.method: update
-#      show_sql: true
-#      format_sql: true
-#      dialect: org.hibernate.dialect.MySQLDialect
+      dialect: org.hibernate.dialect.MySQLDialect
 
